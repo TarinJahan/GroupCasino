@@ -19,7 +19,9 @@ public class Card {
         return rank;
     }
 
-    public SUITS getSuit() {
-        return suit;
+    public SUITS getSuit() { return suit; }
+
+    public String getSymbol() {
+        return suit.symbol;
     }
 }
