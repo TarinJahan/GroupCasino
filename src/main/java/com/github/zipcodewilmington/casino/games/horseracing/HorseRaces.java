@@ -54,8 +54,10 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
         winningHorse = pickWinner();
         if (playerPick == winningHorse) {
             int odds = stable.get(playerPick).getOdds();
+            System.out.println("You won");
+            System.exit(0);
         }
-//        payout(wager*odds);
+        System.out.printf("You lose. You picked %s, horse %s won.%n", playerPick, winningHorse);
     }
 
     public int getStableSize() {

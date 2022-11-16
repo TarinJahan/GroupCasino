@@ -4,6 +4,8 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.horseracing.HorseBetter;
+import com.github.zipcodewilmington.casino.games.horseracing.HorseRaces;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
@@ -19,21 +21,23 @@ public class Casino implements Runnable {
 
     @Override
     public void run() {
-        String arcadeDashBoardInput;
+        String CasinoInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         do {
-            arcadeDashBoardInput = getArcadeDashboardInput();
-            if ("select-game".equals(arcadeDashBoardInput)) {
+            CasinoInput = getCasinoInput();
+            if ("2".equals(CasinoInput)) {
                 String accountName = console.getStringInput("Enter your account name:");
                 String accountPassword = console.getStringInput("Enter your account password:");
                 CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
                 boolean isValidLogin = casinoAccount != null;
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
-                    if (gameSelectionInput.equals("SLOTS")) {
+                    if (gameSelectionInput.equals("1")) {
                         play(new SlotsGame(), new SlotsPlayer());
-                    } else if (gameSelectionInput.equals("NUMBERGUESS")) {
+                    } else if (gameSelectionInput.equals("2")) {
                         play(new NumberGuessGame(), new NumberGuessPlayer());
+                    } else if (gameSelectionInput.equals("3")) {
+                        play(new HorseRaces(), new HorseBetter());
                     } else {
                         // TODO - implement better exception handling
                         String errorMessage = "[ %s ] is an invalid game selection";
@@ -44,21 +48,21 @@ public class Casino implements Runnable {
                     String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
                     throw new RuntimeException(String.format(errorMessage, accountPassword, accountName));
                 }
-            } else if ("create-account".equals(arcadeDashBoardInput)) {
+            } else if ("1".equals(CasinoInput)) {
                 console.println("Welcome to the account-creation screen.");
                 String accountName = console.getStringInput("Enter your account name:");
                 String accountPassword = console.getStringInput("Enter your account password:");
                 CasinoAccount newAccount = casinoAccountManager.createAccount(accountName, accountPassword);
                 casinoAccountManager.registerAccount(newAccount);
             }
-        } while (!"logout".equals(arcadeDashBoardInput));
+        } while (!"logout".equals(CasinoInput));
     }
 
-    private String getArcadeDashboardInput() {
+    private String getCasinoInput() {
         return console.getStringInput(new StringBuilder()
-                .append("Welcome to the Arcade Dashboard!")
+                .append("Welcome to Casino ZETA!")
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ create-account ], [ select-game ]")
+                .append("\n\t[ 1. create-account ], [ 2. select-game ]")
                 .toString());
     }
 
@@ -66,7 +70,7 @@ public class Casino implements Runnable {
         return console.getStringInput(new StringBuilder()
                 .append("Welcome to the Game Selection Dashboard!")
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ NUMBERGUESS ]")
+                .append("\n\t[ 1. SLOTS ], [ 2. NUMBERGUESS ], [ 3. HORSE RACING ]")
                 .toString());
     }
 
