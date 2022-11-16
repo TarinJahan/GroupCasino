@@ -7,7 +7,7 @@ import com.github.zipcodewilmington.utils.IOConsole;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HorseRaces extends IOConsole implements GameInterface {
+public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> {
     Map<Integer, Horse> stable = new HashMap<>();
     int[] winner = {1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 5, 6, 7, 8, 2, 3, 4, 5, 6, 7, 8, 3, 5, 6, 7, 8, 3, 7, 8, 3, 7, 8, 3, 7, 8, 7, 8, 7};
     int playerPick;
@@ -46,6 +46,9 @@ public class HorseRaces extends IOConsole implements GameInterface {
 
     @Override
     public void run() {
+        PlayerInterface player = new HorseBetter();
+        GameInterface<HorseBetter> game = new HorseRaces();
+        game.add(player);
         buildStable();
         playerPick = pickHorse();
         winningHorse = pickWinner();
