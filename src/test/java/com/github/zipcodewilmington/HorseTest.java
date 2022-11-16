@@ -5,7 +5,7 @@ import com.github.zipcodewilmington.casino.games.horseracing.HorseRaces;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class HorseTesting {
+public class HorseTest {
     @Test
     public void testHorse() {
         Horse h1 = new Horse("Steve", 1, 5);

@@ -2,10 +2,24 @@ package com.github.zipcodewilmington.casino.games.cardgames;
 
 public class Card {
     int value;
-    enum Suit {HEARTS, DIAMONDS, CLUBS, SPADES}
+    RANKS rank;
+    SUITS suit;
 
-    public Card(int value, String suit) {
+    public Card(int value, SUITS suit, RANKS rank) {
         this.value = value;
-//        this.Suit = suit;
+        this.suit = suit;
+        this.rank = rank;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public RANKS getRank() {
+        return rank;
+    }
+
+    public SUITS getSuit() {
+        return suit;
     }
 }
