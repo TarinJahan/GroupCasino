@@ -1,3 +1,4 @@
+zach:pro:0.0
 wynn:duffy:0.0
 boyd:crowder:2000.0
 raylan:givens:0.0

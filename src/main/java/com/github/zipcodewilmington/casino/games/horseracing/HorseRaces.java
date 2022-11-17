@@ -43,7 +43,7 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
     @Override
     public void printRules() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Welcome to the RaceTrack! You will be able to pick one of the following horses.\n");
+        sb.append("Welcome to the RaceTrack! You will be able to pick one of the following horses.\n\n");
         String horses = "";
         for (int i=1; i<=stable.size(); i++) {
             Horse h1 = stable.get(i);
@@ -53,7 +53,24 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
     }
 
     @Override
+    public void playAgain() {
+        int pa = getIntegerInput("Would you like to bet again? [ 1. Yes ], [ 2. No ]");
+        if (pa==1) {
+            run();
+        }
+    }
+
+    @Override
     public void run() {
+        horseRace();
+        playAgain();
+    }
+
+    public int getStableSize() {
+        return stable.size();
+    }
+
+    public void horseRace() {
         PlayerInterface player = new HorseBetter();
         GameInterface<HorseBetter> game = new HorseRaces();
         game.add(player);
@@ -64,12 +81,9 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
         if (playerPick == winningHorse) {
             int odds = stable.get(playerPick).getOdds();
             System.out.println("You won");
-            System.exit(0);
         }
-        System.out.printf("You lose. You picked %s, horse %s won.%n", playerPick, winningHorse);
-    }
-
-    public int getStableSize() {
-        return stable.size();
+        else {
+            System.out.printf("You lose. You picked %s, horse %s won.%n", playerPick, winningHorse);
+        }
     }
 }

@@ -45,4 +45,8 @@ public class CasinoAccount {
     public void printAccountBalance() {
         System.out.println(moneyFormat.format(accountBalance));
     }
+
+    public void cashOut() {
+        accountBalance = 0.0;
+    }
 }

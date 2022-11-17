@@ -1,4 +1,8 @@
 package com.github.zipcodewilmington.casino.games.cardgames.blackjack;
 
-public class BlackJackDouble {
+import com.github.zipcodewilmington.utils.IOConsole;
+
+public class BlackJackDouble extends IOConsole {
+    public static void run() {
+    }
 }

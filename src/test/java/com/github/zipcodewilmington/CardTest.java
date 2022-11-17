@@ -36,5 +36,9 @@ public class CardTest {
             if (cTest.getSuit()==SUITS.HEARTS) count++;
         }
         Assert.assertEquals(decks*13, count);
+
+        Card card = d1.dealCard();
+        Assert.assertEquals(decks*52-1, d1.deck.size());
+        System.out.println(card.toString());
     }
 }

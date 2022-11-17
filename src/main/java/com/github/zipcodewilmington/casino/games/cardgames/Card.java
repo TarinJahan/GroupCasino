@@ -24,4 +24,12 @@ public class Card {
     public String getSymbol() {
         return suit.symbol;
     }
+
+    public String getNum() {
+        return rank.num;
+    }
+
+    public String toString() {
+        return rank.num + " " + suit.symbol;
+    }
 }
