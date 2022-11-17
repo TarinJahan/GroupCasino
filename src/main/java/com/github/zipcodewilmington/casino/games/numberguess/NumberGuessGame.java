@@ -48,4 +48,9 @@ public class NumberGuessGame extends IOConsole implements GameInterface{
     public void printRules() {
         System.out.println("Welcome to number guess! You have 5 attempts to guess the winning number which is 0-50");
     }
+
+    @Override
+    public void playAgain() {
+
+    }
 }

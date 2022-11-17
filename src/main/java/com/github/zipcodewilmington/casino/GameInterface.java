@@ -25,4 +25,9 @@ public interface GameInterface<PlayerType extends PlayerInterface> extends Runna
      * print rules, defined by individual games
      */
     void printRules();
+
+    /**
+     * ask to play again
+     */
+    void playAgain();
 }

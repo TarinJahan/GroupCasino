@@ -68,4 +68,8 @@ public class WordGuessGame extends IOConsole implements GameInterface {
                 "and have a total of 5 attempts");
     }
 
+    @Override
+    public void playAgain() {
+
+    }
 }

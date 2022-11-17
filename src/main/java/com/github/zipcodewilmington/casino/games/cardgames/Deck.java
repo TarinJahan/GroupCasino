@@ -1,6 +1,5 @@
 package com.github.zipcodewilmington.casino.games.cardgames;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -27,5 +26,9 @@ public class Deck {
 
     public void createShoe(int decks) {
         for (int i=0; i<decks; i++) addDeck();
+    }
+
+    public Card dealCard() {
+        return deck.pop();
     }
 }
