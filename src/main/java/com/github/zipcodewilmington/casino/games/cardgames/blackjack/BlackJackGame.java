@@ -4,7 +4,7 @@ import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.utils.IOConsole;
 
-public class BlackJackGame extends IOConsole implements GameInterface {
+public abstract class BlackJackGame extends IOConsole implements GameInterface {
 
     @Override
     public void add(PlayerInterface player) {
@@ -20,10 +20,10 @@ public class BlackJackGame extends IOConsole implements GameInterface {
     public void run() {
         int numPlayers = getIntegerInput("How many players? (1 or 2)");
         if (numPlayers==1) {
-            BlackJackSingle.run();
+            BlackJackSingle.runBJ();
         }
         else if (numPlayers==2) {
-            BlackJackDouble.run();
+            BlackJackDouble.runBJ();
         }
     }
 
