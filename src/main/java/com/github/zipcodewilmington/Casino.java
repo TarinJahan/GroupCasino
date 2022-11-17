@@ -32,16 +32,20 @@ public class Casino implements Runnable {
                 boolean isValidLogin = casinoAccount != null;
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
-                    if (gameSelectionInput.equals("1")) {
-                        play(new SlotsGame(), new SlotsPlayer());
-                    } else if (gameSelectionInput.equals("2")) {
-                        play(new NumberGuessGame(), new NumberGuessPlayer());
-                    } else if (gameSelectionInput.equals("3")) {
-                        play(new HorseRaces(), new HorseBetter());
-                    } else {
-                        // TODO - implement better exception handling
-                        String errorMessage = "[ %s ] is an invalid game selection";
-                        throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
+                    switch (gameSelectionInput) {
+                        case "1":
+                            play(new SlotsGame(), new SlotsPlayer());
+                            break;
+                        case "2":
+                            play(new NumberGuessGame(), new NumberGuessPlayer());
+                            break;
+                        case "3":
+                            play(new HorseRaces(), new HorseBetter());
+                            break;
+                        default:
+                            // TODO - implement better exception handling
+                            String errorMessage = "[ %s ] is an invalid game selection";
+                            throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
                     }
                 } else {
                     // TODO - implement better exception handling
