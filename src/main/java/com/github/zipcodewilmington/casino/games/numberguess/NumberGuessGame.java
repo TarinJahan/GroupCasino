@@ -26,30 +26,27 @@ public class NumberGuessGame extends IOConsole implements GameInterface{
     @Override
     public void run() {
         int winningNum = (int) (50 * Math.random());
-        int numOfGuesses = 0;
         int numPlayerGuessed;
 
-        for (int i = 0; i < 50; i++) {
+        printRules();
+        for (int i = 0; i < 5; i++) { //gives player 5 guesses
             numPlayerGuessed = getIntegerInput("Guess a number");
             if (winningNum == numPlayerGuessed) {
                 System.out.println("Correct!");
                 break;
             } else if (winningNum > numPlayerGuessed) {
                 System.out.println("Too small, guess again");
-                numOfGuesses++;
             } else if (winningNum < numPlayerGuessed) {
                 System.out.println("Too big, guess again");
-                numOfGuesses++;
-            } else if (numOfGuesses == 5) {
-                System.out.println("Out of tries");
             }
         }
+        System.out.println("Out of tries");
 
     }
 
     @Override
     public void printRules() {
-
+        System.out.println("Welcome to number guess! You have 5 attempts to guess the winning number which is 0-50");
     }
 
     @Override
