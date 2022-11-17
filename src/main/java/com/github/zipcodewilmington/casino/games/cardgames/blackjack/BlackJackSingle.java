@@ -4,12 +4,13 @@ import com.github.zipcodewilmington.casino.games.cardgames.Card;
 import com.github.zipcodewilmington.casino.games.cardgames.Deck;
 import com.github.zipcodewilmington.utils.IOConsole;
 
-public class BlackJackSingle extends IOConsole {
+public class BlackJackSingle extends BlackJackGame {
+    IOConsole console = new IOConsole();
 
-    public void run() {
+    public static void runBJ() {
         Deck deck = new Deck();
         deck.addDeck();
 
-        
+
     }
 }
