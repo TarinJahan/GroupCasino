@@ -46,4 +46,9 @@ public class NumberGuessGame extends IOConsole implements GameInterface{
         }
 
     }
+
+    @Override
+    public void printRules() {
+
+    }
 }

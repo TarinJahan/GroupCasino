@@ -58,4 +58,9 @@ public class SlotsGame extends IOConsole implements GameInterface {
         }
 
     }
+
+    @Override
+    public void printRules() {
+
+    }
 }

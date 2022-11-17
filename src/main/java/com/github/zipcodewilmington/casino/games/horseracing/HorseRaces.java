@@ -35,13 +35,21 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
     }
 
     @Override
-    public void add(PlayerInterface player) {
-
-    }
+    public void add(PlayerInterface player) {}
 
     @Override
-    public void remove(PlayerInterface player) {
+    public void remove(PlayerInterface player) {}
 
+    @Override
+    public void printRules() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Welcome to the RaceTrack! You will be able to pick one of the following horses.\n");
+        String horses = "";
+        for (int i=1; i<=stable.size(); i++) {
+            Horse h1 = stable.get(i);
+            sb.append(String.format("Horse %s, %s. Odds of winning: %s:1\n", h1.number, h1.name, h1.odds));
+        }
+        System.out.println(sb);
     }
 
     @Override
@@ -50,12 +58,15 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
         GameInterface<HorseBetter> game = new HorseRaces();
         game.add(player);
         buildStable();
+        printRules();
         playerPick = pickHorse();
         winningHorse = pickWinner();
         if (playerPick == winningHorse) {
             int odds = stable.get(playerPick).getOdds();
+            System.out.println("You won");
+            System.exit(0);
         }
-//        payout(wager*odds);
+        System.out.printf("You lose. You picked %s, horse %s won.%n", playerPick, winningHorse);
     }
 
     public int getStableSize() {

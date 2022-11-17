@@ -24,4 +24,9 @@ public class WordGuessGame extends IOConsole implements GameInterface {
     public void run() {
 
     }
+
+    @Override
+    public void printRules() {
+
+    }
 }
