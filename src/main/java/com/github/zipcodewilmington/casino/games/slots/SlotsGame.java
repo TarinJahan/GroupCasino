@@ -26,10 +26,15 @@ public class SlotsGame extends IOConsole implements GameInterface {
         slots[0] = column1[generator.nextInt(8)];
         slots[1] = column2[generator.nextInt(8)];
         slots[2] = column3[generator.nextInt(8)];
+        System.out.println("[" + slots[0] + "][" + slots[1] + "][" + slots[2] + "]");
 
-        if (slots[0] == slots[1] || slots[1] == slots[2]) {
+        if (slots[0] == slots[1] && slots[1] != slots[2]) {
             System.out.println("2 MATCHES");
-        } else if (slots[0] == slots[1] && slots[0] == slots[2]  || slots[0] == slots[2]) {
+        } else if (slots[0] == slots[2] && slots[1] != slots[2]) {
+            System.out.println("2 MATCHES");
+        } else if (slots[2] == slots[1] && slots[0] != slots[2]) {
+            System.out.println("2 MATCHES");
+        } else if (slots[0] == slots[1] && slots[0] == slots[2]) {
             System.out.println("$$$ JACKPOT $$$");
         } else {
             System.out.println("NO MATCHES");
