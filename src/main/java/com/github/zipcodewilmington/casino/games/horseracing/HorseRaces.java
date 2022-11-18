@@ -13,7 +13,7 @@ public class HorseRaces implements GameInterface<HorseBetter> {
     Map<Integer, Horse> stable = new HashMap<>();
     int[] winner = {1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 5, 6, 7, 8, 2, 3, 4, 5, 6, 7, 8, 3, 5, 6, 7, 8, 3, 7, 8, 3, 7, 8, 3, 7, 8, 7, 8, 7};
     int playerPick;
-    int winningHorse;
+    public int winningHorse;
     double payout;
     double bet;
 
@@ -34,16 +34,19 @@ public class HorseRaces implements GameInterface<HorseBetter> {
         playerPick = console.getIntegerInput("Pick a Horse: ");
     }
 
-    public void pickWinner() {
-        winningHorse = winner[(int) (Math.random() * (winner.length-1))];
+    public int pickWinner() {
+        return winner[(int) (Math.random() * (winner.length-1))];
+    }
+
+    public double whoWon() {
         if (playerPick == winningHorse) {
             int odds = stable.get(playerPick).getOdds();
             System.out.println("You won " + odds*bet);
-            payout = odds*bet;
+            return odds*bet;
         }
         else {
             System.out.printf("You lose. You picked %s, horse %s won.%n", playerPick, winningHorse);
-            payout = -bet;
+            return -bet;
         }
     }
 
@@ -93,7 +96,8 @@ public class HorseRaces implements GameInterface<HorseBetter> {
         printRules();
         pickHorse();
         placeBet();
-        pickWinner();
+        winningHorse = pickWinner();
+        payout = pickWinner();
         hb.transferMoney(payout);
     }
 

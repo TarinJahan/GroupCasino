@@ -30,7 +30,6 @@ public class BlackJackSingle implements GameInterface {
         while (!na.equals("STAY")) {
             if (na.equals("HIT")) {
                 deck = dealCardPlayer(bjp, deck);
-                System.out.println(bjp.bjh.getHand());
             }
             if (bust()) {
                 break;
@@ -49,7 +48,15 @@ public class BlackJackSingle implements GameInterface {
     }
 
     private String getWinner() {
-        if (bjp.bjh.getValueOfHand()>dealer.bjh.getValueOfHand() || dealer.bjh.getValueOfHand()>21 && bjp.bjh.getValueOfHand()<=21) {
+        if (blackJack()) {
+            payout = (bet + bet*1.5);
+            return "BlackJack!! Player wins " + payout;
+        }
+        else if (bjp.bjh.getValueOfHand()>21) {
+            payout = -bet;
+            return "BUST! Player loses " + bet;
+        }
+        else if (bjp.bjh.getValueOfHand()>dealer.bjh.getValueOfHand() || dealer.bjh.getValueOfHand()>21) {
             payout = bet;
             return "Player wins " + payout;
         }
@@ -60,14 +67,6 @@ public class BlackJackSingle implements GameInterface {
         else if (bjp.bjh.getValueOfHand()==dealer.bjh.getValueOfHand()) {
             payout = 0;
             return "Tie, wager returned.";
-        }
-        else if (bjp.bjh.getValueOfHand()>dealer.bjh.getValueOfHand()) {
-            payout = -bet;
-            return "BUST! Player loses " + bet;
-        }
-        else if (blackJack()) {
-            payout = (bet + bet*1.5);
-            return "BlackJack!! Player wins " + payout;
         }
         else { return "Something bad happened"; }
     }
@@ -120,7 +119,7 @@ public class BlackJackSingle implements GameInterface {
     }
 
     public void playAgain() {
-        int pa = console.getIntegerInput("Would you like to play again? [ 1. Yes ], [ 2. No ]");
+        int pa = console.getIntegerInput("Would you like to play again? [ 1. Yes ] [ 2. No ]");
         if (pa==1) {
             run();
         }
