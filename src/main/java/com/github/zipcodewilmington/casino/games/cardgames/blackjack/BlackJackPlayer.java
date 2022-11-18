@@ -1,12 +1,14 @@
 package com.github.zipcodewilmington.casino.games.cardgames.blackjack;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.cardgames.Card;
 import com.github.zipcodewilmington.casino.games.cardgames.Hand;
 
 public class BlackJackPlayer implements PlayerInterface {
-    CasinoAccount bjp;
+    public Object addMoneys;
+    CasinoAccount bjp = Casino.casinoAccount;
     Hand bjh = new Hand();
 
     public BlackJackPlayer() {
@@ -15,7 +17,7 @@ public class BlackJackPlayer implements PlayerInterface {
 
     @Override
     public CasinoAccount getArcadeAccount() {
-        return bjp;
+        return Casino.casinoAccount;
     }
 
     @Override
@@ -27,11 +29,15 @@ public class BlackJackPlayer implements PlayerInterface {
         bjh.addCard(c1);
     }
 
-    public Hand getHand() {
-        return bjh;
-    }
-
     public void discardHand() {
         bjh = new Hand();
+    }
+
+    public double getBalance() {
+        return bjp.getAccountBalance();
+    }
+
+    public void transferMoney(double wager) {
+        bjp.addMoneys(wager);
     }
 }

@@ -21,6 +21,7 @@ import com.github.zipcodewilmington.utils.IOConsole;
  * Created by leon on 7/21/2020.
  */
 public class Casino implements Runnable {
+    public static CasinoAccount casinoAccount;
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
     @Override
@@ -32,7 +33,7 @@ public class Casino implements Runnable {
             if ("1".equals(CasinoInput)) {
                 String accountName = console.getStringInput("Enter your account name:");
                 String accountPassword = console.getStringInput("Enter your account password:");
-                CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
+                casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
                 boolean isValidLogin = casinoAccount != null;
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
