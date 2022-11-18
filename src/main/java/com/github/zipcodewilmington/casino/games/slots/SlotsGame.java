@@ -11,6 +11,9 @@ import java.util.Random;
  */
 
 public class SlotsGame extends IOConsole implements GameInterface {
+    SlotsPlayer sp;
+    double bet = 5;
+    double payout = 0;
     Random generator = new Random();
     String[] slots = new String[3];
     String[] column1 = {"!", "@", "#", "$", "%", "&", "*", "?"};
@@ -36,32 +39,36 @@ public class SlotsGame extends IOConsole implements GameInterface {
             System.out.println("2 MATCHES");
         } else if (slots[0] == slots[1] && slots[0] == slots[2]) {
             System.out.println("$$$ JACKPOT $$$");
+            payout += (bet * 5);
         } else {
             System.out.println("NO MATCHES");
+            payout -= bet;
         }
     }
 
     @Override
     public void add(PlayerInterface player) {
-
+        sp = (SlotsPlayer) player;
     }
 
     @Override
     public void remove(PlayerInterface player) {
+        sp = null;
     }
 
     @Override
     public void run() {
+        printRules();
         playAgain();
     }
 
     @Override
     public void printRules() {
-       /* System.out.println("Welcome to slots!"
-                +"Pull the lever and try to get 2 or 3 matches!"
-                +"If you get 2 matches, you get"
-                +"If you get 3 matches it's a JACKPOT!"
-                +"If there's no matches, you lose.");*/
+       System.out.println("Welcome to slots! It will cost 5 dollars per play."
+                +"\nPull the lever and try to get 2 or 3 matches!"
+                +"\nIf you get 2 matches, you get"
+                +"\nIf you get 3 matches it's a JACKPOT!"
+                +"\nIf there's no matches, you lose your bet and the game.");
     }
 
     @Override

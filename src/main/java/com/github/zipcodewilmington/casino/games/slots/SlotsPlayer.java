@@ -10,9 +10,18 @@ import java.util.Random;
  */
 public class SlotsPlayer implements PlayerInterface {
 
+    CasinoAccount sp = getArcadeAccount();
+
+    public SlotsPlayer() {
+    }
+
+    public void transferMoney(double wager) {
+        sp.addMoneys(wager);
+    }
+
     @Override
     public CasinoAccount getArcadeAccount() {
-        return null;
+        return sp;
     }
 
     @Override
