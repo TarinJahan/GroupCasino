@@ -7,11 +7,15 @@ import com.github.zipcodewilmington.utils.IOConsole;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> {
+public class HorseRaces implements GameInterface<HorseBetter> {
+    IOConsole console = new IOConsole();
+    HorseBetter hb;
     Map<Integer, Horse> stable = new HashMap<>();
     int[] winner = {1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 5, 6, 7, 8, 2, 3, 4, 5, 6, 7, 8, 3, 5, 6, 7, 8, 3, 7, 8, 3, 7, 8, 3, 7, 8, 7, 8, 7};
     int playerPick;
     int winningHorse;
+    double payout;
+    double bet;
 
     public HorseRaces() {}
 
@@ -26,19 +30,32 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
         stable.put(8, new Horse("Kobe", 8, 2));
     }
 
-    public int pickHorse() {
-        return getIntegerInput("Pick a Horse: ");
+    public void pickHorse() {
+        playerPick = console.getIntegerInput("Pick a Horse: ");
     }
 
-    public int pickWinner() {
-        return winner[(int) (Math.random() * (winner.length-1))];
+    public void pickWinner() {
+        winningHorse = winner[(int) (Math.random() * (winner.length-1))];
+        if (playerPick == winningHorse) {
+            int odds = stable.get(playerPick).getOdds();
+            System.out.println("You won " + odds*bet);
+            payout = odds*bet;
+        }
+        else {
+            System.out.printf("You lose. You picked %s, horse %s won.%n", playerPick, winningHorse);
+            payout = -bet;
+        }
     }
 
     @Override
-    public void add(PlayerInterface player) {}
+    public void add(PlayerInterface player) {
+        hb = (HorseBetter) player;
+    }
 
     @Override
-    public void remove(PlayerInterface player) {}
+    public void remove(PlayerInterface player) {
+        hb = null;
+    }
 
     @Override
     public void printRules() {
@@ -54,7 +71,7 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
 
     @Override
     public void playAgain() {
-        int pa = getIntegerInput("Would you like to bet again? [ 1. Yes ], [ 2. No ]");
+        int pa = console.getIntegerInput("Would you like to bet again? [ 1. Yes ], [ 2. No ]");
         if (pa==1) {
             run();
         }
@@ -64,6 +81,7 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
     public void run() {
         horseRace();
         playAgain();
+        remove(hb);
     }
 
     public int getStableSize() {
@@ -71,19 +89,15 @@ public class HorseRaces extends IOConsole implements GameInterface<HorseBetter> 
     }
 
     public void horseRace() {
-        PlayerInterface player = new HorseBetter();
-        GameInterface<HorseBetter> game = new HorseRaces();
-        game.add(player);
         buildStable();
         printRules();
-        playerPick = pickHorse();
-        winningHorse = pickWinner();
-        if (playerPick == winningHorse) {
-            int odds = stable.get(playerPick).getOdds();
-            System.out.println("You won");
-        }
-        else {
-            System.out.printf("You lose. You picked %s, horse %s won.%n", playerPick, winningHorse);
-        }
+        pickHorse();
+        placeBet();
+        pickWinner();
+        hb.transferMoney(payout);
+    }
+
+    public void placeBet() {
+        bet = console.getDoubleInput("How much are you putting on "+playerPick+"?");
     }
 }

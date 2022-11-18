@@ -103,6 +103,7 @@ public class BlackJackSingle implements GameInterface {
 
     @Override
     public void remove(PlayerInterface player) {
+        bjp = null;
         players.clear();
     }
 

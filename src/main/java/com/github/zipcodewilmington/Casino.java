@@ -79,6 +79,7 @@ public class Casino implements Runnable {
                             throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
                         }
                     }
+                    casinoAccountManager.writeToFile();
                 } else {
                     // TODO - implement better exception handling
                     String errorMessage = String.format("No account found with name of [ %s ] and password of [ %s ]"
