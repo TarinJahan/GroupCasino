@@ -43,15 +43,19 @@ public class WordGuessGame extends IOConsole implements GameInterface {
 
     @Override
     public void run() {
+        int attempts = 0;
         //print rules
         printRules();
         //ask player to make guess
         for (int i = 0; i < 5; i++) {
+            attempts++;
             if (playerGuess.equals(chosenWord)) {
                 System.out.println("Correct, you win!");
                 break;
             } else if (!playerGuess.equals(chosenWord)) {
                 System.out.println(numOfCharsGuessedCorrect(chosenWord, playerGuess)); //num of chars correct guessed
+            } if (attempts == 5) {
+                System.out.println("Out of attempts!");
             }
         }
         //check guess against chosen word
