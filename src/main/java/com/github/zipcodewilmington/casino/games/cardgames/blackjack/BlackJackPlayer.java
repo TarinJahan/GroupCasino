@@ -7,8 +7,7 @@ import com.github.zipcodewilmington.casino.games.cardgames.Card;
 import com.github.zipcodewilmington.casino.games.cardgames.Hand;
 
 public class BlackJackPlayer implements PlayerInterface {
-    public Object addMoneys;
-    CasinoAccount bjp = Casino.casinoAccount;
+    CasinoAccount bjp = getArcadeAccount();
     Hand bjh = new Hand();
 
     public BlackJackPlayer() {
@@ -31,10 +30,6 @@ public class BlackJackPlayer implements PlayerInterface {
 
     public void discardHand() {
         bjh = new Hand();
-    }
-
-    public double getBalance() {
-        return bjp.getAccountBalance();
     }
 
     public void transferMoney(double wager) {

@@ -10,14 +10,13 @@ import java.text.DecimalFormat;
 public class CasinoAccount {
     private final String accountName;
     private final String accountPassword;
-    private double accountBalance;
+    private double accountBalance = 0;
 
     DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
 
     public CasinoAccount(String name, String password) {
         this.accountName = name;
         this.accountPassword = password;
-        this.accountBalance = 0;
     }
 
     public CasinoAccount(String name, String password, double balance) {

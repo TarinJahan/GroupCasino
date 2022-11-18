@@ -51,7 +51,7 @@ public class CasinoAccountManager extends IOConsole {
     }
 
     public void writeToFile() {
-        try (BufferedWriter bf = new BufferedWriter(new FileWriter("players.txt"))) {
+        try (BufferedWriter bf = new BufferedWriter(new FileWriter("players.txt", false))) {
 
             for (Map.Entry<String, CasinoAccount> entry : accounts.entrySet()) {
                 String name = entry.getKey();
