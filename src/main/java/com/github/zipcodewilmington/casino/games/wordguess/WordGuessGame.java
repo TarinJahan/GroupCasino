@@ -35,6 +35,7 @@ public class WordGuessGame extends IOConsole implements GameInterface {
     }
 
     public static boolean validPlayerGuess(String playerInput) {
+        //didn't end up using, did while loop instead, come back to learn this later
         playerGuess = playerInput;
         try {
             return playerInput.length() == 5;
