@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class CardTest {
     @Test
-    public void CardTest() {
+    public void cardTest() {
         Card c1 = new Card(1, SUITS.SPADES, RANKS.ACE);
 
         SUITS suitExpected = SUITS.SPADES;
