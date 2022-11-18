@@ -51,7 +51,7 @@ public class CasinoAccountManager extends IOConsole {
     }
 
     public void writeToFile() {
-        try (BufferedWriter bf = new BufferedWriter(new FileWriter("/Users/zachary/Projects/GroupProjects/GroupCasino/players.txt"))) {
+        try (BufferedWriter bf = new BufferedWriter(new FileWriter("players.txt"))) {
 
             for (Map.Entry<String, CasinoAccount> entry : accounts.entrySet()) {
                 String name = entry.getKey();
@@ -67,7 +67,7 @@ public class CasinoAccountManager extends IOConsole {
     }
 
     public void readFromFile() {
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/zachary/Projects/GroupProjects/GroupCasino/players.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("players.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(":");
