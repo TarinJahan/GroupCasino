@@ -4,3 +4,4 @@ boyd:crowder:2000.0
 raylan:givens:0.0
 winona:hawkins:5000.0
 ava:crowder:1000.0
+nina:pass:0.0
