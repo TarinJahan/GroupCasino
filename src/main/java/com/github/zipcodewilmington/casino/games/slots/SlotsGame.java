@@ -76,6 +76,8 @@ public class SlotsGame extends IOConsole implements GameInterface {
         Integer lever = getIntegerInput("Would you like to pull the lever? Type 1 for \"YES\" or 2 for \"NO\"");
         if(lever.equals(1)){
             pullLever();
+            sp.transferMoney(payout);
+            System.out.println(sp.getBalance());
         } else if (lever.equals(2)) {
             System.exit(0);
         }

@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 
@@ -19,9 +20,13 @@ public class SlotsPlayer implements PlayerInterface {
         sp.addMoneys(wager);
     }
 
+    public double getBalance() {
+        return sp.getAccountBalance();
+    }
+
     @Override
     public CasinoAccount getArcadeAccount() {
-        return sp;
+        return Casino.casinoAccount;
     }
 
     @Override
