@@ -4,16 +4,18 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.cardgames.blackjack.BlackJackPlayer;
+import com.github.zipcodewilmington.casino.games.cardgames.blackjack.BlackJackSingle;
 import com.github.zipcodewilmington.casino.games.horseracing.HorseBetter;
 import com.github.zipcodewilmington.casino.games.horseracing.HorseRaces;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
+import com.github.zipcodewilmington.casino.games.wordguess.WordGuessGame;
+import com.github.zipcodewilmington.casino.games.wordguess.WordGuessPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
-
-import java.util.Objects;
 
 /**
  * Created by leon on 7/21/2020.
@@ -36,15 +38,23 @@ public class Casino implements Runnable {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
                     while (!gameSelectionInput.equals("0")) {
                         if (gameSelectionInput.equals("1")) {
-                            play(new SlotsGame(), new SlotsPlayer());
-                            gameSelectionInput = getGameSelectionInput();
-                        }
-                        else if (gameSelectionInput.equals("2")) {
                             play(new NumberGuessGame(), new NumberGuessPlayer());
                             gameSelectionInput = getGameSelectionInput();
                         }
+                        else if (gameSelectionInput.equals("2")) {
+                            play(new WordGuessGame(), new WordGuessPlayer());
+                            gameSelectionInput = getGameSelectionInput();
+                        }
                         else if (gameSelectionInput.equals("3")) {
+                            play(new SlotsGame(), new SlotsPlayer());
+                            gameSelectionInput = getGameSelectionInput();
+                        }
+                        else if (gameSelectionInput.equals("4")) {
                             play(new HorseRaces(), new HorseBetter());
+                            gameSelectionInput = getGameSelectionInput();
+                        }
+                        else if (gameSelectionInput.equals("5")) {
+                            play(new BlackJackSingle(), new BlackJackPlayer());
                             gameSelectionInput = getGameSelectionInput();
                         }
                         else if (gameSelectionInput.equals("7")) {
@@ -84,19 +94,15 @@ public class Casino implements Runnable {
     }
 
     private String getCasinoInput() {
-        return console.getStringInput(new StringBuilder()
-                .append("Welcome to Casino ZETA!")
-                .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ 1. Login ] [ 2. Create Account ] [ 0. Exit ]")
-                .toString());
+        return console.getStringInput("Welcome to Casino ZETA!" +
+                "\nFrom here, you can select any of the following options:" +
+                "\n\t[ 1. Login ] [ 2. Create Account ] [ 0. Exit ]");
     }
 
     private String getGameSelectionInput() {
-        return console.getStringInput(new StringBuilder()
-                .append("Welcome to the Game Selection Dashboard!")
-                .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ 1. Slots ] [ 2. Number Guess ] [ 3. Horse Racing ] [ 7. See Balance ] [ 8. Add Funds ] [ 9. Cash Out ] [ 0. Logout ]")
-                .toString());
+        return console.getStringInput("Welcome to the Game Selection Dashboard!" +
+                "\nFrom here, you can select any of the following options:" +
+                "\n\t[ 1. Number Guess ] [ 2. Word Guess ] [ 3. Slots ][ 4. Horse Racing ] [ 5. BlackJack ] [ 7. See Balance ] [ 8. Add Funds ] [ 9. Cash Out ] [ 0. Logout ]");
     }
 
     private void play(Object gameObject, Object playerObject) {
