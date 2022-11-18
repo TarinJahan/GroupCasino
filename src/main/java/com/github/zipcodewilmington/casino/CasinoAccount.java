@@ -42,8 +42,8 @@ public class CasinoAccount {
         return accountBalance;
     }
 
-    public double addMoneys(double money) {
-        return accountBalance += money;
+    public void addMoneys(double money) {
+        accountBalance += money;
     }
 
     public void printAccountBalance() {

@@ -58,4 +58,13 @@ public class Hand {
     public void discard() {
         cards.empty();
     }
+
+    public boolean splittable() {
+        return (cards.firstElement().getValue()==cards.lastElement().getValue());
+    }
+
+
+    public int getSize() {
+        return cards.size();
+    }
 }
