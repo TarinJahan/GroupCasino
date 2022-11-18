@@ -1,9 +1,10 @@
 new:acc:0.0
-zach:pro:1000000.0
+zach:pro:1000025.0
 wynn:duffy:0.0
 boyd:crowder:2000.0
 raylan:givens:0.0
 Tarin:pass:0.0
+kjlsdf:sadf:0.0
 winona:hawkins:5000.0
 ava:crowder:1000.0
 nina:pass:0.0
