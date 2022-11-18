@@ -80,8 +80,9 @@ public class Casino implements Runnable {
                     }
                 } else {
                     // TODO - implement better exception handling
-                    String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
-                    throw new RuntimeException(String.format(errorMessage, accountName, accountPassword));
+                    String errorMessage = String.format("No account found with name of [ %s ] and password of [ %s ]"
+                            , accountName, accountPassword);
+                    System.out.println(errorMessage + "\nPlease try again");
                 }
             } else if ("2".equals(CasinoInput)) {
                 console.println("Welcome to the account-creation screen.");

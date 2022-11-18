@@ -40,4 +40,32 @@ public class WordGuessGameTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void validPlayerGuessTest() {
+        String input = "hi";
+        boolean actual = WordGuessGame.validPlayerGuess(input);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void validPlayerGuessTest2() {
+        String input = "theworldisround";
+        boolean actual = WordGuessGame.validPlayerGuess(input);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void validPlayerGuessTest3() {
+        String input = "";
+        boolean actual = WordGuessGame.validPlayerGuess(input);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void validPlayerGuessTest4() {
+        String input = "hello";
+        boolean actual = WordGuessGame.validPlayerGuess(input);
+        Assert.assertTrue(actual);
+    }
+
 }

@@ -33,7 +33,7 @@ public class NumberGuessGame extends IOConsole implements GameInterface{
         for (int i = 0; i < 5; i++) { //gives player 5 guesses
             numPlayerGuessed = getIntegerInput("Guess a number");
             attempts++;
-            System.out.println(attempts);
+//            System.out.println(attempts);
             if (winningNum == numPlayerGuessed) {
                 System.out.println("Correct!");
                 break;
