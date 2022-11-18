@@ -98,6 +98,7 @@ public class HorseRaces implements GameInterface<HorseBetter> {
         placeBet();
         winningHorse = pickWinner();
         payout = pickWinner();
+        whoWon();
         hb.transferMoney(payout);
     }
 
