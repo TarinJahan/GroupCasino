@@ -69,7 +69,7 @@ public class Casino implements Runnable {
                         }
                         else if (gameSelectionInput.equals("9")) {
                             System.out.println("You're walking away with ");
-                            casinoAccount.printAccountBalance();
+                            System.out.println(casinoAccount.printAccountBalance());
                             casinoAccount.cashOut();
                             gameSelectionInput = getGameSelectionInput();
                         }

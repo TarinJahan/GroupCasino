@@ -13,7 +13,6 @@ public class Hand {
     }
 
     public Hand() {
-
     }
 
     public String getHand() {
@@ -56,7 +55,7 @@ public class Hand {
     }
 
     public void discard() {
-        cards.empty();
+        cards.clear();
     }
 
     public boolean splittable() {

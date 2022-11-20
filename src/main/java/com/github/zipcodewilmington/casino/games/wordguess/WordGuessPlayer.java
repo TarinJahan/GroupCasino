@@ -9,8 +9,8 @@ public class WordGuessPlayer implements PlayerInterface {
         return null;
     }
 
-    @Override
-    public <SomeReturnType> SomeReturnType play() {
-        return null;
-    }
+//    @Override
+//    public <SomeReturnType> SomeReturnType play() {
+//        return null;
+//    }
 }

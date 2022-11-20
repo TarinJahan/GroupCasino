@@ -1,5 +1,6 @@
 new:acc:0.0
-zach:pro:1000025.0
+zach:pro:1000031.0
+star:man:0.0
 wynn:duffy:0.0
 boyd:crowder:2000.0
 raylan:givens:0.0
