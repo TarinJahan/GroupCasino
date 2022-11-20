@@ -10,9 +10,6 @@ import com.github.zipcodewilmington.utils.IOConsole;
 public class NumberGuessGame extends IOConsole implements GameInterface{
     public NumberGuessGame() {}
 
-    public void main(String[] args) {
-    }
-
     @Override
     public void add(PlayerInterface player) {
 

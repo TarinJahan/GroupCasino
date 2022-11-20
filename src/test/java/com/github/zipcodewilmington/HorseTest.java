@@ -1,9 +1,12 @@
 package com.github.zipcodewilmington;
 
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.games.horseracing.Horse;
+import com.github.zipcodewilmington.casino.games.horseracing.HorseBetter;
 import com.github.zipcodewilmington.casino.games.horseracing.HorseRaces;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class HorseTest {
     @Test
@@ -17,7 +20,7 @@ public class HorseTest {
     }
 
     @Test
-    public void testHorseWinner() {
+    public void testPickWinner() {
         HorseRaces hr = new HorseRaces();
         int[] horses = new int[9];
 
@@ -38,4 +41,28 @@ public class HorseTest {
 
         Assert.assertTrue(hr.getStableSize()>0);
     }
+
+    @Test
+    public void testWhoWon() {
+        HorseRaces hr = new HorseRaces();
+        hr.buildStable();
+        double expected = 80.0;
+        double actual = hr.whoWon();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testHorseBetter() {
+        CasinoAccount ca = new CasinoAccount("star", "man");
+        HorseBetter hb = new HorseBetter();
+
+        hb.addAccount(ca);
+        CasinoAccount ca1 = hb.getArcadeAccount();
+
+        hb.transferMoney(50);
+
+        Assertions.assertEquals(ca.getAccountName(), ca1.getAccountName());
+    }
 }
+

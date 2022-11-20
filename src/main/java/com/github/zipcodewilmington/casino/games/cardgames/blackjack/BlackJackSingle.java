@@ -22,11 +22,12 @@ public class BlackJackSingle implements GameInterface {
         printRules();
         placeBet();
         deck = dealCards(deck);
-        printStatus();
+        System.out.println(printStatus());
         if (bjp.bjh.splittable()) {
             na = nextAction(true);
         }
         else { na = nextAction(false); }
+        na = console.getStringInput("").toUpperCase();
         while (!na.equals("STAY")) {
             if (na.equals("HIT")) {
                 deck = dealCardPlayer(bjp, deck);
@@ -39,7 +40,7 @@ public class BlackJackSingle implements GameInterface {
         while(dealer.bjh.getValueOfHand()<17) {
             deck = dealCardPlayer(dealer, deck);
         }
-        printResults();
+        System.out.println(printResults());
         System.out.println(getWinner());
         bjp.transferMoney(payout);
 
@@ -47,7 +48,7 @@ public class BlackJackSingle implements GameInterface {
         dealer.discardHand();
     }
 
-    private String getWinner() {
+    public String getWinner() {
         if (blackJack()) {
             payout = (bet + bet*1.5);
             return "BlackJack!! Player wins " + payout;
@@ -71,17 +72,15 @@ public class BlackJackSingle implements GameInterface {
         else { return "Something bad happened"; }
     }
 
-    private void printStatus() {
-        System.out.println("Dealer: [   ] [" + dealer.bjh.showCard1().toString() + "]");
-        System.out.println("Player: " + bjp.bjh.getHand());
+    public String printStatus() {
+        return "Dealer: [   ] [" + dealer.bjh.showCard1().toString() + "]\nPlayer: " + bjp.bjh.getHand();
     }
 
-    private void printResults() {
-        System.out.println("Dealer: " + dealer.bjh.getHand());
-        System.out.println("Player: " + bjp.bjh.getHand());
+    public String printResults() {
+        return "Dealer: " + dealer.bjh.getHand() + "\nPlayer: " + bjp.bjh.getHand();
     }
 
-    private Deck dealCards(Deck deck) {
+    public Deck dealCards(Deck deck) {
         bjp.addCard(deck.dealCard());
         dealer.addCard(deck.dealCard());
         bjp.addCard(deck.dealCard());
@@ -89,7 +88,7 @@ public class BlackJackSingle implements GameInterface {
         return deck;
     }
 
-    private Deck dealCardPlayer(BlackJackPlayer player, Deck deck) {
+    public Deck dealCardPlayer(BlackJackPlayer player, Deck deck) {
         player.addCard(deck.dealCard());
         return deck;
     }
@@ -127,14 +126,13 @@ public class BlackJackSingle implements GameInterface {
 
     public String nextAction(boolean split) {
         if (split) {
+            StringBuilder sb = new StringBuilder();
             for (Actions a : Actions.values()) {
-                System.out.printf("[%s] ", a);
+                sb.append("[").append(a).append("] ");
             }
+            return sb.toString();
         }
-        else {
-            System.out.println("[HIT] [STAY]");
-        }
-        return console.getStringInput("").toUpperCase();
+        else return ("[HIT] [STAY]");
     }
 
     public boolean bust() {

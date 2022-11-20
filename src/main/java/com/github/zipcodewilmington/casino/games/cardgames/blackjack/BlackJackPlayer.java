@@ -19,10 +19,10 @@ public class BlackJackPlayer implements PlayerInterface {
         return Casino.casinoAccount;
     }
 
-    @Override
-    public <SomeReturnType> SomeReturnType play() {
-        return null;
-    }
+//    @Override
+//    public <SomeReturnType> SomeReturnType play() {
+//        return null;
+//    }
 
     public void addCard(Card c1) {
         bjh.addCard(c1);

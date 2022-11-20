@@ -6,6 +6,7 @@ import com.github.zipcodewilmington.casino.games.cardgames.SUITS;
 import com.github.zipcodewilmington.casino.games.cardgames.RANKS;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class CardTest {
     @Test
@@ -19,6 +20,19 @@ public class CardTest {
 
         Assert.assertEquals(suitExpected, suitActual);
         Assert.assertEquals(rankExpected, rankActual);
+    }
+
+    @Test
+    public void testSymbolNumCard() {
+        Card c1 = new Card(1, SUITS.SPADES, RANKS.ACE);
+
+        String expected = "\u2664";
+        String actual = c1.getSymbol();
+        String exp = "A";
+        String act = c1.getNum();
+
+        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(exp, act);
     }
 
     @Test

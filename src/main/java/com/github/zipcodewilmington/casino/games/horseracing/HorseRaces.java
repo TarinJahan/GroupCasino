@@ -12,10 +12,10 @@ public class HorseRaces implements GameInterface<HorseBetter> {
     HorseBetter hb;
     Map<Integer, Horse> stable = new HashMap<>();
     int[] winner = {1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 5, 6, 7, 8, 2, 3, 4, 5, 6, 7, 8, 3, 5, 6, 7, 8, 3, 7, 8, 3, 7, 8, 3, 7, 8, 7, 8, 7};
-    int playerPick;
-    public int winningHorse;
-    double payout;
-    double bet;
+    int playerPick=1;
+    public int winningHorse=1;
+    double payout=0;
+    double bet=10;
 
     public HorseRaces() {}
 
